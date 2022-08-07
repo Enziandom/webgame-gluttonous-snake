@@ -10,12 +10,9 @@ let dot = ref(null);
 onMounted(() => {
   map.value = createMap(dot.value);
   let snake = new Snake(map.value, "Snake", GameObjectType.movable);
-  snake.speed = 200;
-  snake.init();
+  snake.speed = 300;
+  snake.down();
 });
-
-// 1. 物体开始移动
-
 </script>
 
 <template>

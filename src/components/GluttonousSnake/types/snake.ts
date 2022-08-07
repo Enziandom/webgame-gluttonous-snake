@@ -6,14 +6,37 @@ export class Snake extends MovableObject {
     super(map, name, type);
   }
 
-  private initInterval: any;
+  public up(): void {
 
-  init() {
-    this.initInterval = setInterval(() => {
-      this.oldY = this.newY;
-      this.oldX = this.newX;
-      this.map[this.oldY][this.oldX].style.backgroundColor = "red";
+  }
+
+  public down(): void {
+    this.interval = setInterval(() => {
       this.newY++;
+      this.oldY = this.newY - 1;
+      if ( this.newY > 11 ) {
+        clearInterval(this.interval);
+      } else {
+        this.map[this.newY][this.newX].style.backgroundColor = "red";
+        this.map[this.oldY][this.oldX].style.backgroundColor = "blue";
+      }
+    }, this.speed);
+  }
+
+  public left(): void {
+
+  }
+
+  public right(): void {
+    this.interval = setInterval(() => {
+      this.newX++;
+      this.oldX = this.newX - 1;
+      if ( this.newX > 11 ) {
+        clearInterval(this.interval);
+      } else {
+        this.map[this.newY][this.newX].style.backgroundColor = "red";
+        this.map[this.oldY][this.oldX].style.backgroundColor = "blue";
+      }
     }, this.speed);
   }
 }
